@@ -1,1 +1,1 @@
-# C/C++ Pointer Discussions
+# Template project C/C++
