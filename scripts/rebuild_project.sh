@@ -11,8 +11,8 @@ if [ $? != 0 ]; then
     exit 2
 fi
 
-$BUILD_DIR/pointer_discussion_CPP
-$BUILD_DIR/tests/*test
+cd ${BUILD_DIR}
+make install
 
-
-#rm -rf $BUILD_DIR
+cd ../
+rm -rf $BUILD_DIR
