@@ -12,7 +12,7 @@ if [ $? != 0 ]; then
 fi
 
 cd ${BUILD_DIR}
-make install
+#make install
 
-cd ../
-rm -rf $BUILD_DIR
+#cd ../
+#rm -rf $BUILD_DIR
