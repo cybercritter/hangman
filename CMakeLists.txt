@@ -25,23 +25,17 @@ file(GLOB_RECURSE
   ${CMAKE_SOURCE_DIR_STARTER}/*.[CHI]
 )
 
+add_executable(${PROJECT_NAME} ${ALL_CXX_SOURCE_FILES})
+
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   message(FATAL_ERROR "In-source builds are not allowed")
 endif()
-
-add_executable(${PROJECT_NAME} ${ALL_CXX_SOURCE_FILES})
 
 execute_process(COMMAND git log -1 --pretty=format:%h OUTPUT_VARIABLE SHA)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "SHA=${SHA}")
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-
-message("Running Clang Tidy")
-
-find_program(CLANG_TIDY_EXE_NAMES "clang-tidy")
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 
 # first we can indicate the documentation build as an option and set it to ON by
 # default
