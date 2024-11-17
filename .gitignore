@@ -133,6 +133,8 @@ build-release/
 **/build_debug
 **/build_release
 **/build
+**/cmake-build*
 
+.idea/*
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,cmake,ninja,visualstudiocode
-#
+
