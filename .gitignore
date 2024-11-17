@@ -28,7 +28,6 @@
 
 # Shared objects (inc. Windows DLLs)
 *.dll
-<<<<<<< HEAD
 *.so
 *.so.*
 *.dylib
@@ -104,7 +103,6 @@ dkms.conf
 # Precompiled Headers
 
 # Compiled Dynamic libraries
->>>>>>> de9abf1 (update)
 
 # Fortran module files
 *.mod
@@ -115,7 +113,6 @@ dkms.conf
 
 # Executables
 
-<<<<<<< HEAD
 ### CMake ###
 CMakeLists.txt.user
 CMakeCache.txt
@@ -251,7 +248,7 @@ build-release/
 **/build_debug
 **/build_release
 **/build
+**/cmake-build*
 
+.idea/*
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,cmake,ninja,visualstudiocode
-#
->>>>>>> de9abf1 (update)
