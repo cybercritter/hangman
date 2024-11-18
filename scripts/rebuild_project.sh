@@ -11,8 +11,22 @@ if [ $? != 0 ]; then
     exit 2
 fi
 
+<<<<<<< HEAD
 cd ${BUILD_DIR}
 #make install
 
 #cd ../
 #rm -rf $BUILD_DIR
+||||||| parent of de9abf1 (update)
+$BUILD_DIR/pointer_discussion_CPP
+$BUILD_DIR/tests/*test
+
+
+#rm -rf $BUILD_DIR
+=======
+cd ${BUILD_DIR}
+make install
+
+cd ../
+rm -rf $BUILD_DIR
+>>>>>>> de9abf1 (update)
