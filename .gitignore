@@ -175,80 +175,13 @@ build-release/
 **/cmake-build*
 
 .idea/*
-# End of https://www.toptal.com/developers/gitignore/api/c,c++,cmake,ninja,visualstudiocode
 
-||||||| parent of de9abf1 (update)
-.idea/**
-cmake-*
-build*
-=======
-.idea/**
-cmake-*
-build*
-*.exe
-*.out
-*.app
+.lock
+**/.hangman/**
+**/hangman2.*.bak*
+tmp/**
 
-### CMake ###
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
-_deps
-
-### CMake Patch ###
-# External projects
-*-prefix/
-
-### Ninja ###
-.ninja_deps
-.ninja_log
-
-### CMake Build Dest ####
-build/
-build-debug/
-build-release/
-
-
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-**/.vscode
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
-
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
-
-
-#git
-.git/
-
-# Doxygen
-**/html
-**/latex
-
-# cmake build output
-**/build_debug
-**/build_release
-**/build
-**/cmake-build*
-
-.idea/*
+.vpprefdata/**
+**/.hangman2*
+*.*~
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,cmake,ninja,visualstudiocode

@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
 project(hangman LANGUAGES C CXX)
-project(cpp_project_starter LANGUAGES C CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -68,12 +67,6 @@ set_target_properties(${PROJECT_NAME}_CPP PROPERTIES CXX_CLANG_TIDY "${CLANG_TID
 # add_subdirectory(src)
 install(TARGETS ${PROJECT_NAME}
   DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-
-message("Running Clang Tidy")
-
-find_program(CLANG_TIDY_EXE_NAMES "clang-tidy")
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 
 # first we can indicate the documentation build as an option and set it to ON by
 # default
