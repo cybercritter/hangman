@@ -1,6 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "IPlayer.h"
+#include <IPlayer.h>
 
 /**
  * An implementation of the IPlayer interface representing a player in a game. This class encapsulates the properties and behaviors of a player, such as their name, score, level, guessed letters, and the number of attempts left.
@@ -23,11 +23,11 @@ private:
 	/**
 	 * Holds the player's current score. The score variable keeps track of the player's accumulated points throughout the game. It starts at 0 and increases as the player progresses. 
 	 */
-	uint32_t score;
+	uint32_t score{};
 	/**
 	 * Represents the current level of the player. This variable tracks the player's progression through different levels. It is initialized to 0 and can be incremented as the player advances to higher levels in the game. 
 	 */
-	uint16_t level;
+	uint16_t level{};
 	/**
 	 * A set containing letters that the player has guessed incorrectly. This set is used to track and display the letters that have been tried but are not present in the target word. 
 	 */
@@ -38,17 +38,17 @@ public:
 	 * Constructs a Player object with the specified name, score, and level.
 	 * nameThe name of the player. scoreThe score of the player. levelThe level of the player. A Player object. A Player object. 
 	 */
-	Player(/* The name of the player.  */std::string name, /* The score of the player.  */uint32_t score, /* The level of the player.  */uint16_t level);
+	Player(const std::string& name, uint32_t score, uint16_t level);
 
 	/**
 	 * Destructor for the Player class.
 	 * Cleans up resources and performs necessary finalization tasks before the Player object is destroyed. Overrides the virtual destructor from the IPlayer interface. 
 	 */
-	~Player() override;
+	~Player() override = default;
 
 	/**
 	 * Displays the current status of the player. This method shows the player's current score, level, and other relevant game information. It is meant to provide feedback to the player about their ongoing progress in the game.
-	 * std::runtime_errorif the status cannot be displayed. 
+	 * std::runtime_error if the status cannot be displayed.
 	 */
 	void displayStatus() override;
 
@@ -60,7 +60,7 @@ public:
 
 	/**
 	 * Retrieves the number of attempts left for the player.
-	 * The number of remaining attempts as a uint32_t. The number of remaining attempts as a uint32_t. 
+	 * The number of remaining attempts as uint32_t. The number of remaining attempts as uint32_t.
 	 */
 	uint32_t getAttemptsLeft() override;
 

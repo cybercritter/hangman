@@ -1,23 +1,24 @@
-#ifndef COMPUTER_H
+#ifndef GAMEMANAGER_H
+#define GAMEMANAGER_H
+
 #define COMPUTER_H
 #include <map>
 #include <Player.h>
 #include <string>
-#include <WordManager.h>
 
 /**
  * A map to store words and their corresponding scores.
  */
-class Computer
+class GameManager
 {
 public:
-	Computer() = delete;
-	~Computer() = delete;
+	GameManager() = delete;
+	~GameManager() = delete;
 
 	/**
-	 * Retrieves the word list of the computer.
+	 * Retrieves the word list.
 	 *
-	 * This function accesses and returns the word list maintained by the Computer class,
+	 * This function accesses and returns the word list maintained by the GameManager class,
 	 * where each word is associated with an integer value representing its frequency or score.
 	 *
 	 * @throw Throws an exception if the function is not yet implemented.
@@ -64,13 +65,7 @@ private:
 	 * available through this instance depend on the implementation of the Player class.
 	 */
 	Player player;
-	/**
-	 * An instance of the FileManager class responsible for handling file operations.
-	 *
-	 * This variable is used to manage file-related tasks such as reading word data and
-	 * writing high scores.
-	 */
-	WordManager wordManager;
+
 };
 
 #endif

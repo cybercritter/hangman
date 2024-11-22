@@ -1,23 +1,25 @@
-#include "Player.h"
 
-Player::Player(/* The name of the player.  */std::string name, /* The score of the player.  */uint32_t score, /* The level of the player.  */uint16_t level) {
+#include "Player.h"
+#include <stdexcept>
+
+Player::Player(const std::string& name, uint32_t score, uint16_t level) {
 	// TODO - implement Player::Player
-	throw "Not yet implemented";
+
 }
 
 void Player::displayStatus() {
 	// TODO - implement Player::displayStatus
-	throw "Not yet implemented";
+	throw std::runtime_error("Not yet implemented");
 }
 
-bool Player::guessLetter(/* The letter the player is guessing.  */char letter) {
+bool Player::guessLetter(char letter) {
 	// TODO - implement Player::guessLetter
-	throw "Not yet implemented";
+	throw std::runtime_error("Not yet implemented");
 }
 
 uint32_t Player::getAttemptsLeft() {
 	// TODO - implement Player::getAttemptsLeft
-	throw "Not yet implemented";
+	throw std::runtime_error("Not yet implemented");
 }
 
 std::set<char> Player::getGuessedLetters() {

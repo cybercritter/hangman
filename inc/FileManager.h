@@ -4,8 +4,10 @@
 #include <string>
 #include <vector>
 #include <map>
-
+#include <filesystem>
 #include <types.h>
+
+namespace fs = std::filesystem;
 
 /**
  * Retrieves word data from the specified file.
@@ -19,23 +21,27 @@ class FileManager {
 	 * This variable holds the list of filenames to be used within the FileManager class.
 	 */
 private:
-	std::vector<std::string> filename;
+    std::vector<std::string> wordList;
+	FileTypes currentDifficulty = FileTypes::EASY_FILE;
+    std::filesystem::path filename = fs::current_path() / ".." /"data"/"dictionary.txt";
 
-	/**
-	 * Retrieves the word data from a file.
-	 *
-	 * @param filename The name of the file from which to read the word data.
-	 * @return A vector of strings containing the words read from the file.
-	 */
+
 public:
-	std::vector<std::string> getWordData(std::string filename);
+
 
 	/**
 	 * Writes high scores to a file.
 	 *
 	 * @param highScores A pointer to a map that contains player names as keys and their respective high scores as values.
 	 */
-	void writeHighScores(std::map<std::string, uint32_t>* highScores);
+	static void writeHighScores(std::map<std::string, uint32_t>* highScores);
+
+	/**
+	 * Fetches a list of words based on the specified difficulty level.
+	 * @param difficulty The difficulty level to filter the words by.
+	 */
+	void getWordList(FileTypes difficulty) const;
+	// Fetches a list of words based on the specified difficulty level.
 
 };
 
