@@ -1,9 +1,11 @@
 #include <FileManager.h>
+#include <fstream>
 #include <map>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <file_not_found_exception.h>/**
+#include <file_not_found_exception.h>
+
+/**
  * Retrieves a list of words from a file based on the given difficulty level.
  *
  * @param difficulty The difficulty level, represented by the FileTypes enum, which determines the required word length.
@@ -11,66 +13,46 @@
  * @return A vector of strings containing words that match the specified difficulty level.
  */
 #include <iostream>
-
-void FileManager::getWordList(FileTypes difficulty) const
+std::vector<std::string> FileManager::getWordList(FileTypes difficulty) const
 {
-	auto file = std::ifstream(filename);
-	unsigned long wordSize = 0;
+	std::ifstream file(filename);
+	std::vector<std::string> wordList;
+
 	if (!file.is_open())
 	{
 		throw FileNotFoundException(filename);
 	}
 
-	std::vector<std::string> wordList;
+	auto shouldIncludeWord = [difficulty](const std::string& word) -> bool {
+		switch (difficulty) {
+		case FileTypes::EASY_FILE: return word.length() <= EASY_FILE_MAX_LENGTH;
+		case FileTypes::MEDIUM_FILE: return word.length() > EASY_FILE_MAX_LENGTH && word.length() <= MEDIUM_FILE_MAX_LENGTH;
+		case FileTypes::HARD_FILE: return word.length() > MEDIUM_FILE_MAX_LENGTH && word.length() <= HARD_FILE_MAX_LENGTH;
+		default: return true;
+		}
+	};
 
-	switch (difficulty)
-	{
-	case FileTypes::EASY_FILE:
-		wordSize = 5;
-		break;
-
-	case FileTypes::MEDIUM_FILE:
-		wordSize = 7;
-		break;
-	case FileTypes::HARD_FILE:
-		wordSize = 9;
-		break;
-
-	default:
-		wordSize = 0;
-		break;
-	}
-	for (std::string word; std::getline(file, word);)
-	{
-		if (word.length() == static_cast<unsigned long>(difficulty))
-		{
-			if (word.length() <= wordSize )
-				wordList.push_back(word);
+	for (std::string word; std::getline(file, word);) {
+		if (shouldIncludeWord(word)) {
+			wordList.push_back(word);
 		}
 	}
 
-	file.close();
-
-	for (const auto& word : wordList)
-	{
-		std::cout << word << std::endl;
-	}
+	return wordList;
 }
-
-/**
- * Writes the high scores to a text file named "highscores.txt".
- *
- * @param highScores A pointer to a map containing player names and their corresponding scores.
- */
-void FileManager::writeHighScores(std::map<std::string, uint32_t>* highScores)
-{
-	std::fstream file;
-	file.open("highscores.txt", std::ios::out | std::ios::trunc);
-
-	for (auto& [player, score] : *highScores)
+	/**
+	 * Writes the high scores to a text file named "highscores.txt".
+	 *
+	 * @param highScores A pointer to a map containing player names and their corresponding scores.
+	 */
+	void FileManager::writeHighScores(std::map<std::string, uint32_t>* highScores)
 	{
-		file.clear();
-		file << player << " " << score << std::endl;
+		std::fstream file;
+		file.open("highscores.txt", std::ios::out | std::ios::trunc);
+
+		for (auto& [player, score] : *highScores)
+		{
+			file << player << " " << score << std::endl;
+		}
+		file.close();
 	}
-	file.close();
-}

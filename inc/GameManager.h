@@ -5,6 +5,8 @@
 #include <map>
 #include <Player.h>
 #include <string>
+#include <types.h>
+#include <FileManager.h>
 
 /**
  * A map to store words and their corresponding scores.
@@ -23,7 +25,7 @@ public:
 	 *
 	 * @throw Throws an exception if the function is not yet implemented.
 	 */
-	void getWordList();
+	void getWordList(FileTypes difficulty);
 
 	/**
 	 * @brief Calculates the score based on the current state of the word list.
@@ -34,7 +36,7 @@ public:
 	 *
 	 * @throw std::runtime_error Thrown if the method is not yet implemented.
 	 */
-	void calculateScore();
+	static int calculateScore(std::string &word);
 
 	/**
 	 * @brief Draws the computer's state on the screen.
@@ -45,7 +47,18 @@ public:
 	 *
 	 * @throws Throws an exception indicating the method is not yet implemented.
 	 */
-	void draw();
+	static void draw();
+
+	void menu();
+	void play();
+	void quit();
+	void highScores();
+	void newGame();
+	void setDifficulty();
+	void setPlayerName();
+	void setPlayerName(std::string name);
+	void setDifficulty(FileTypes difficulty);
+	void setDifficulty(int difficulty);
 
 private:
 	/**
@@ -55,7 +68,7 @@ private:
 	 * It can be used for tasks like word frequency counting, scoring, or any other operation
 	 * that requires associating words with numerical data.
 	 */
-	std::map<std::string, int> wordList;
+	std::vector<std::string> wordList;
 
 	/**
 	 * An instance of the Player class.
@@ -65,6 +78,7 @@ private:
 	 * available through this instance depend on the implementation of the Player class.
 	 */
 	Player player;
+	FileManager fm;
 
 };
 

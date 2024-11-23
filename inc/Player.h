@@ -5,8 +5,8 @@
 /**
  * An implementation of the IPlayer interface representing a player in a game. This class encapsulates the properties and behaviors of a player, such as their name, score, level, guessed letters, and the number of attempts left.
  */
-class Player final : IPlayer {
-
+class Player final : IPlayer
+{
 private:
 	/**
 	 * A set containing the remaining attempts a player has. Each entry in the set represents the number of attempts left for the player. The set may be modified throughout the gameplay, decreasing in size as the player makes incorrect guesses. 
@@ -23,11 +23,18 @@ private:
 	/**
 	 * Holds the player's current score. The score variable keeps track of the player's accumulated points throughout the game. It starts at 0 and increases as the player progresses. 
 	 */
-	uint32_t score{};
+	int score{};
+	// ...
+
+
+	// ...
+
 	/**
 	 * Represents the current level of the player. This variable tracks the player's progression through different levels. It is initialized to 0 and can be incremented as the player advances to higher levels in the game. 
 	 */
-	uint16_t level{};
+	int level{};
+
+
 	/**
 	 * A set containing letters that the player has guessed incorrectly. This set is used to track and display the letters that have been tried but are not present in the target word. 
 	 */
@@ -38,7 +45,7 @@ public:
 	 * Constructs a Player object with the specified name, score, and level.
 	 * nameThe name of the player. scoreThe score of the player. levelThe level of the player. A Player object. A Player object. 
 	 */
-	Player(const std::string& name, uint32_t score, uint16_t level);
+	Player(const std::string& name, int score, int level);
 
 	/**
 	 * Destructor for the Player class.
@@ -75,6 +82,17 @@ public:
 	 * The name of the player as a string. The name of the player as a string. 
 	 */
 	std::string getName() override;
+
+	/**
+ * Sets the player's level.
+ * @param newLevel The new level to be set for the player.
+ */
+	void setLevel(int newLevel);
+	/**
+ * Sets the player's score.
+ * @param newScore The new score to be set for the player.
+ */
+	void setScore(int newScore);
 };
 
 #endif
