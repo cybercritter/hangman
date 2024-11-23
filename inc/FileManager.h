@@ -21,7 +21,7 @@ class FileManager {
 	 * This variable holds the list of filenames to be used within the FileManager class.
 	 */
 private:
-    std::vector<std::string> wordList;
+    std::map<std::string, int> wordList;
 	FileTypes currentDifficulty = FileTypes::EASY_FILE;
     std::filesystem::path filename = fs::current_path() / ".." /"data"/"dictionary.txt";
 
@@ -40,7 +40,7 @@ public:
 	 * Fetches a list of words based on the specified difficulty level.
 	 * @param difficulty The difficulty level to filter the words by.
 	 */
-	void getWordList(FileTypes difficulty) const;
+	[[nodiscard]] std::vector<std::string>  getWordList(FileTypes difficulty) const;
 	// Fetches a list of words based on the specified difficulty level.
 
 };

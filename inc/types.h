@@ -14,10 +14,15 @@
  * Easy, medium and hard words to guess.
  */
 enum class FileTypes {
-    EASY_FILE,
-    MEDIUM_FILE,
-    HARD_FILE
+    EASY_FILE = 5,
+    MEDIUM_FILE = 7,
+    HARD_FILE = 10
 };
+
+constexpr unsigned int EASY_FILE_MAX_LENGTH = static_cast<unsigned int>(FileTypes::EASY_FILE);
+constexpr unsigned long MEDIUM_FILE_MAX_LENGTH = static_cast<unsigned long>(FileTypes::MEDIUM_FILE);
+constexpr unsigned long HARD_FILE_MAX_LENGTH = static_cast<unsigned long>(FileTypes::HARD_FILE);
+
 
 /**
  * @brief Defines the maximum allowable length for a file name.

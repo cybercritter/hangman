@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <stdexcept>
 
-Player::Player(const std::string& name, uint32_t score, uint16_t level) {
+Player::Player(const std::string& name, int score, int level) {
 	// TODO - implement Player::Player
 
 }
@@ -29,3 +29,18 @@ std::set<char> Player::getGuessedLetters() {
 std::string Player::getName() {
 	return this->name;
 }
+
+/**
+ * Sets the player's score.
+ * @param newScore The new score to be set for the player.
+ */
+void Player::setScore(int newScore)
+{
+	score = newScore;
+}
+
+void Player::setLevel(int newLevel)
+{
+	level = newLevel;
+}
+
