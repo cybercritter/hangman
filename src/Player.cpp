@@ -1,46 +1,62 @@
 
-#include "Player.h"
-#include <stdexcept>
+#include <Player.h>
 
-Player::Player(const std::string& name, int score, int level) {
-	// TODO - implement Player::Player
+#include <iostream>
 
+
+/**
+ * Constructor to initialize a Player object with a given name.
+ *
+ * @param name the name of the player to initialize.
+ * @return A new instance of the Player class.
+ */
+Player::Player(std::string name) :
+	name(std::move(name))
+{
 }
 
-void Player::displayStatus() {
-	// TODO - implement Player::displayStatus
-	throw std::runtime_error("Not yet implemented");
+/**
+ * @brief Displays the current status of the player.
+ *
+ * This method prints the player's name and level to the standard output.
+ */
+void Player::displayPlayerStatus() const
+{
+	std::cout << "Player: " << name << std::endl << " Level: " << level << std::endl;
 }
 
-bool Player::guessLetter(char letter) {
-	// TODO - implement Player::guessLetter
-	throw std::runtime_error("Not yet implemented");
-}
 
-uint32_t Player::getAttemptsLeft() {
-	// TODO - implement Player::getAttemptsLeft
-	throw std::runtime_error("Not yet implemented");
-}
-
-std::set<char> Player::getGuessedLetters() {
-	return this->guessedLetters;
-}
-
-std::string Player::getName() {
+/**
+ * Retrieves the name of the player.
+ *
+ * @return The name of the player as a string.
+ */
+std::string Player::getName()
+{
 	return this->name;
 }
 
 /**
- * Sets the player's score.
- * @param newScore The new score to be set for the player.
+ * @brief Sets the level of the player.
+ *
+ * This method updates the level of the current player instance.
+ *
+ * @param level The new level to be set for the player.
  */
-void Player::setScore(int newScore)
+void Player::setLevel(const int level)
 {
-	score = newScore;
+	this->level = level;
 }
 
-void Player::setLevel(int newLevel)
+/**
+ * Retrieves the current level of the player.
+ *
+ * @return The level of the player as an integer.
+ */
+int Player::getLevel() const
 {
-	level = newLevel;
+	return this->level;
 }
+
+
 
