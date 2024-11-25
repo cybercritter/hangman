@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   // Main game loop
 for (;;)
 {
-  gameManager->setName(name_);
+  gameManager->setPlayerName(name_);
   gameManager->draw();   // Draw the game state
   gameManager->menu();   // Show the menu for input (e.g., player guesses)
 
