@@ -111,7 +111,7 @@ void GameManager::displayWord() const
  */
 void GameManager::displayHangman() const
 {
-	switch(const int wrongGuesses = static_cast<int>(incorrectGuessedLetters.size())) {
+	switch(static_cast<int>(incorrectGuessedLetters.size())) {
 	case 0:
 		std::cout << "  ----\n  |  |\n     |\n     |\n     |\n     |\n=========";
 		break;
@@ -179,7 +179,8 @@ void GameManager::menu()
 {
 	char letter;
 	std::cout << std::endl;
-	std::cout << player->getName() << " Please guess a letter: ";
+	std::cout << player->getName();
+	std::cout << " Please guess a letter: ";
 	std::cin >> letter;
 
 	letter = static_cast<char>(tolower(letter));
@@ -367,6 +368,7 @@ void GameManager::playAgain()
 	}
 	else
 	{
+		std::cout << "Thanks for playing! Exiting the game..." << std::endl;
 		std::exit(EXIT_SUCCESS);
 	}
 }

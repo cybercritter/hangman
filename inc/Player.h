@@ -53,15 +53,7 @@ public:
 	 */
 	void setLevel(int level);
 
-	/**
-	 * @brief Displays the player's current status.
-	 *
-	 * This function prints the player's name and level to the standard output.
-	 */
-	void displayPlayerStatus() const;
-
 private:
-	/***/
 	/**
 	 * @brief Represents the name of a player.
 	 */

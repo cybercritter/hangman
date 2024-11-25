@@ -16,17 +16,6 @@ Player::Player(std::string name) :
 }
 
 /**
- * @brief Displays the current status of the player.
- *
- * This method prints the player's name and level to the standard output.
- */
-void Player::displayPlayerStatus() const
-{
-	std::cout << "Player: " << name << std::endl << " Level: " << level << std::endl;
-}
-
-
-/**
  * Retrieves the name of the player.
  *
  * @return The name of the player as a string.
