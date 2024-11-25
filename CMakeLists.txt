@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
 project(hangman LANGUAGES C CXX)
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # Set C++ compiler options
 set(CMAKE_CXX_STANDARD 17)
@@ -28,13 +27,10 @@ set(ALL_CXX_SOURCE_FILES
 )
 
 #build library
-message("Building library")
 add_library(${PROJECT_NAME}lib ${ALL_CXX_SOURCE_FILES})
 target_include_directories(${PROJECT_NAME}lib PRIVATE "inc")
 
 # Build binary
-message("Building Application")
-
 add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
 target_include_directories(${PROJECT_NAME} PRIVATE "inc")
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}lib)
