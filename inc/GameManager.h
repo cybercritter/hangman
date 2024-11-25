@@ -1,13 +1,13 @@
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 
-#define COMPUTER_H
-#include <map>
-#include <Player.h>
-#include <string>
-#include <types.h>
 #include <FileManager.h>
+#include <Player.h>
+#include <types.h>
+
 #include <set>
+#include <string>
+
 
 /**
  * @class GameManager
@@ -46,15 +46,7 @@ public:
 	 */
 	~GameManager();
 
-	/**
-	 * @brief Selects a new random word from the current word list and updates the target word.
-	 *
-	 * Ensures that the word list is not empty before selecting and setting a random word from the list to
-	 * the targetWord member variable.
-	 *
-	 * If the word list is found to be empty, it prints an error message and exits early.
-	 */
-	void getNewWord();
+
 	/**
 	 * @brief Draws the current state of the game.
 	 *
@@ -64,23 +56,6 @@ public:
 	 * It calls helper methods to display the hangman figure and the correctly guessed portions of the target word.
 	 */
 	void draw() const;
-	/**
-	 * @brief Displays the current state of the target word with guessed and un-guessed letters.
-	 *
-	 * This method prints the target word, revealing letters that have been correctly guessed
-	 * and displaying underscores for letters that have not yet been guessed. Each character
-	 * of the word is followed by a space for readability. The method ends the line after
-	 * displaying the entire word.
-	 */
-	void displayWord() const;
-
-	/**
-	 * @brief Displays the current state of the hangman figure based on the number of incorrect guesses.
-	 *
-	 * This function draws the hangman figure on the console. The drawing changes based on the number
-	 * of incorrect letters guessed. It also displays the number of attempts left.
-	 */
-	void displayHangman() const;
 
 	/**
 	 * @brief Starts a new game session of Hangman.
@@ -100,58 +75,7 @@ public:
 	 * 3. Converting the letter to lowercase.
 	 * 4. Invoking the guessLetter method to process the guessed letter.
 	 */
-
 	void menu();
-
-
-	/**
-	 * @brief Handles the result of a player's guess in the Hangman game.
-	 *
-	 * Updates the state based on whether the guessed letter is found in the word.
-	 * This includes updating the list of guessed letters, decrementing attempts, and
-	 * determining if the maximum number of tries has been exceeded.
-	 *
-	 * @param letter The letter that was guessed.
-	 * @param maxTriesExceeded A reference to a boolean that will be set to true if the maximum
-	 * number of tries has been exceeded.
-	 * @param letterFound A boolean indicating whether the guessed letter is in the word.
-	 * @param letter_ The original letter guessed by the player.
-	 * @return A boolean indicating whether the player should keep guessing.
-	 */
-	bool handle_guess_result(char letter, bool& maxTriesExceeded, bool letterFound, char letter_);
-
-	/**
-	 * Sets the difficulty level for the word.
-	 *
-	 * @param difficulty An enum value of type WordDifficultyTypes indicating the level of difficulty to be set for the word.
-	 */
-	void setDifficulty(WordDifficultyTypes difficulty);
-
-	/**
-	 * Checks if the guessed letter is correct and updates the game state accordingly.
-	 *
-	 * @param letter The letter guessed by the player.
-	 * @return True if the maximum number of tries has been exceeded, false otherwise.
-	 */
-	bool guessLetter(char letter);
-
-	/**
-	 * Checks if the player has won the game.
-	 *
-	 * This method determines if the player has successfully guessed all the letters in the target word.
-	 * Winning conditions are met if all the letters in the target word have been guessed correctly
-	 * and there are still attempts left.
-	 *
-	 * @return true if the player has won the game, false otherwise.
-	 */
-	[[nodiscard]] bool didWin() const;
-
-	/**
-	 * Retrieves the set of letters that have been guessed in the game.
-	 *
-	 * @return A set containing the letters that have been guessed.
-	 */
-	std::set<char> getGuessedLetters();
 
 	/**
 	 * @brief Prompts the user to decide if they want to play again.
@@ -182,18 +106,35 @@ public:
 	 * selects a new target word from the word list.
 	 */
 	void newGame();
-	void decrementAttemptsLeft();
 
 	/**
-	 * @brief Retrieves the number of letters in the current target word.
-	 *
-	 * This method returns the count of characters in the `targetWord`.
-	 *
-	 * @return The number of letters in the `targetWord`.
+	 * @brief Checks if the game is over.
+	 * @return true if the game has ended, false otherwise.
 	 */
-	int getNumberOfLettersInWord() const;
 	bool gameOver() const;
-	void setName(const std::string& name);
+
+	/**
+	 * Checks if the player has won the game.
+	 *
+	 * This method determines if the player has successfully guessed all the letters in the target word.
+	 * Winning conditions are met if all the letters in the target word have been guessed correctly
+	 * and there are still attempts left.
+	 *
+	 * @return true if the player has won the game, false otherwise.
+	 */
+	[[nodiscard]] bool didWin() const;
+
+	/**
+	 * @brief Sets the name of the player.
+	 *
+	 * @param name_ The name of the player to be set.
+	 */
+	void setPlayerName(const std::string& name);
+
+	/**
+	 * @brief Retrieves the target word for the current game session.
+	 * @return The target word that the player is attempting to guess.
+	 */
 	std::string getTargetWord();
 
 private:
@@ -305,7 +246,91 @@ private:
 	 */
 	mutable bool game_state{false};
 
-	std::string name;
-};
+	/**
+	 * @var playerName
+	 * @brief Stores the name of the player.
+	 */
+	std::string playerName;
 
+	/**
+	 * Retrieves the set of letters that have been guessed in the game.
+	 *
+	 * @return A set containing the letters that have been guessed.
+	 */
+	std::set<char> getGuessedLetters();
+
+	/**
+	 * Sets the difficulty level for the word.
+	 *
+	 * @param difficulty An enum value of type WordDifficultyTypes indicating the level of difficulty to be set for the word.
+	 */
+	void setDifficulty(WordDifficultyTypes difficulty);
+
+	/**
+	 * Checks if the guessed letter is correct and updates the game state accordingly.
+	 *
+	 * @param letter The letter guessed by the player.
+	 * @return True if the maximum number of tries has been exceeded, false otherwise.
+	 */
+	void guessLetter(char letter);
+
+
+	/**
+	 * @brief Handles the result of a player's guess in the Hangman game.
+	 *
+	 * Updates the state based on whether the guessed letter is found in the word.
+	 * This includes updating the list of guessed letters, decrementing attempts, and
+	 * determining if the maximum number of tries has been exceeded.
+	 *
+	 * @param letter The letter that was guessed.
+	 * @param maxTriesExceeded A reference to a boolean that will be set to true if the maximum
+	 * number of tries has been exceeded.
+	 * @param letterFound A boolean indicating whether the guessed letter is in the word.
+	 * @param letter_ The original letter guessed by the player.
+	 * @return A boolean indicating whether the player should keep guessing.
+	 */
+	bool handle_guess_result(char letter, bool& maxTriesExceeded, bool letterFound, char letter_);
+
+	/**
+	 * @brief Displays the current state of the target word with guessed and un-guessed letters.
+	 *
+	 * This method prints the target word, revealing letters that have been correctly guessed
+	 * and displaying underscores for letters that have not yet been guessed. Each character
+	 * of the word is followed by a space for readability. The method ends the line after
+	 * displaying the entire word.
+	 */
+	void displayWord() const;
+
+	/**
+	 * @brief Displays the current state of the hangman figure based on the number of incorrect guesses.
+	 *
+	 * This function draws the hangman figure on the console. The drawing changes based on the number
+	 * of incorrect letters guessed. It also displays the number of attempts left.
+	 */
+	void displayHangman() const;
+
+	/**
+	 * @brief Selects a new random word from the current word list and updates the target word.
+	 *
+	 * Ensures that the word list is not empty before selecting and setting a random word from the list to
+	 * the targetWord member variable.
+	 *
+	 * If the word list is found to be empty, it prints an error message and exits early.
+	 */
+	void getNewWord();
+
+	/**
+	 * @brief Decreases the number of attempts left by one.
+	 */
+	void decrementAttemptsLeft();
+
+	/**
+	 * @brief Retrieves the number of letters in the current target word.
+	 *
+	 * This method returns the count of characters in the `targetWord`.
+	 *
+	 * @return The number of letters in the `targetWord`.
+	 */
+	int getNumberOfLettersInWord() const;
+};
 #endif

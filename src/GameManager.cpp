@@ -4,7 +4,6 @@
 #include <random>
 #include <Player.h>
 
-
 /**
  * Destructor for GameManager class.
  * Deallocates the memory assigned to the player and sets the player pointer to null.
@@ -165,7 +164,7 @@ void GameManager::start()
 	wordList = file_manager.getWordList(static_cast<WordDifficultyTypes>(difficulty));
 	getNewWord();
 
-	player = new Player(name);
+	player = new Player(playerName);
 	std::cout << "Creating a new game for you " << player->getName() << std::endl;
 }
 
@@ -224,7 +223,7 @@ bool GameManager::handle_guess_result(const char letter, bool& maxTriesExceeded,
 			keepGuessing = false;
 		}
 	}
-	guessedLetters.insert(letter); // Add to guessedLetters only if the guess is correct
+	guessedLetters.insert(letter);
 	return keepGuessing;
 }
 
@@ -234,7 +233,7 @@ bool GameManager::handle_guess_result(const char letter, bool& maxTriesExceeded,
  * @param letter The letter being guessed by the player.
  * @return true if the maximum number of tries have been exceeded after the guess, otherwise false.
  */
-bool GameManager::guessLetter(const char letter)
+void GameManager::guessLetter(const char letter)
 {
 	bool maxTriesExceeded = false;
 	// Flag to check if the letter is in the target word
@@ -270,8 +269,6 @@ bool GameManager::guessLetter(const char letter)
 			handle_guess_result(letter, maxTriesExceeded, letterFound, letter_);
 		}
 	}
-
-	return (maxTriesExceeded || letterFound);
 }
 
 
@@ -395,9 +392,9 @@ bool GameManager::gameOver() const
 	return game_state;
 }
 
-void GameManager::setName(const std::string& name_)
+void GameManager::setPlayerName(const std::string& name_)
 {
-	name = name_;
+	playerName = name_;
 }
 
 std::string GameManager::getTargetWord()

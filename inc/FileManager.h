@@ -1,11 +1,12 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
+#include <types.h>
+
 #include <string>
 #include <vector>
 #include <map>
 #include <filesystem>
-#include <types.h>
 
 namespace fs = std::filesystem;
 

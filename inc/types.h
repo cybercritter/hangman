@@ -5,8 +5,6 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include <map>
-
 /**
  * @enum WordDifficultyTypes
  * @brief An enumeration to represent the difficulty levels of words.
@@ -25,7 +23,6 @@ enum class WordDifficultyTypes {
     HARD = 3
 };
 
-
 /**
  * @brief Defines the maximum length for words in the 'EASY' difficulty category.
  *
@@ -36,6 +33,7 @@ enum class WordDifficultyTypes {
  * @see WordDifficultyTypes::EASY
  */
 constexpr unsigned int EASY_FILE_MAX_LENGTH = 5;
+
 /**
  * @brief Maximum allowable length for words categorized as MEDIUM difficulty.
  *
@@ -44,6 +42,7 @@ constexpr unsigned int EASY_FILE_MAX_LENGTH = 5;
  * It is derived from the MEDIUM difficulty type enumeration.
  */
 constexpr unsigned long MEDIUM_FILE_MAX_LENGTH = 7;
+
 /**
  * @brief Maximum allowable length for words classified as "HARD" difficulty.
  *
