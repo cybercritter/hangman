@@ -28,7 +28,7 @@ std::vector<std::string> FileManager::getWordList(WordDifficultyTypes difficulty
 
 	// Ensure the file is successfully opened
 	if (!file.is_open()) {
-		throw FileNotFoundException(fileToRead);  // Corrected to use fileToRead
+		throw FileNotFoundException(fileToRead.string());  // Corrected to use fileToRead
 	}
 
 	// Lambda function to determine if a word should be included based on the difficulty level
